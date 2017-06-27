@@ -5,30 +5,47 @@ public class Starting_Point
 {
 	public static void main(String[] args)
 	{
-		/*  Setting double variables */
-		double ogCount, fgCount, abvCount;
-
-		/*  Setting string variables */
-		String ogString, fgString;
-		
+		/*  Declaring double and string variables */
 		/*  Creating a decimal format to show ABV correctly */
+		double ogCount, fgCount, abvCount;
+		String ogString, fgString;
 		DecimalFormat threeDigits = new DecimalFormat("0.00");
-		
+			
 		/*  Input to get original gravity, has to be in format of 0.000
 			Taking the input and storing it for use */		
 		ogString = JOptionPane.showInputDialog("Enter the Original Gravity");
 		ogCount = Double.parseDouble(ogString);
+		
+		/*	Checks to make sure that the original gravity number is in range */
+		if(ogCount > 1.200) {
+			JOptionPane.showMessageDialog(null, "Your hydrometer reading is too high");
+			System.exit(0); }
 		
 		/*  Input to get final gravity, has to be in format of 0.000
 			Taking the input and storing it for use */
 		fgString =	JOptionPane.showInputDialog("Enter in the Final Gravity");
 		fgCount = Double.parseDouble(fgString);
 		
+		/*	Checks to make sure that the final gravity number is in range */
+		if(fgCount < 0.900) {
+			JOptionPane.showMessageDialog(null, "Your hydrometer reading is too low");
+			System.exit(0); }
+		
+		/*	Checks to make sure that the final gravity is not greater than the original gravity */
+		if(fgCount > ogCount){
+			JOptionPane.showMessageDialog(null, "Your final gravity has to be lower than your original gravity"); 
+			System.exit(0); }
+		
 		/*  Calculates the overall ABV */
 		abvCount = (ogCount - fgCount) * 131;
 		
 		/* 	Output showing the ABV */
 		JOptionPane.showMessageDialog(null, "The percentage of alcohol by volume is " + threeDigits.format(abvCount));
+		
+		/* 	Exit the application */
+		System.exit(0);
+		
+		
 		
 		/*
 		 * Calculating Degrees Plato, work in progress *
@@ -54,6 +71,5 @@ public class Starting_Point
 		
 		*/
 		
-		System.exit(0);
 	}
 }
