@@ -1,38 +1,37 @@
 import java.text.DecimalFormat;
 import javax.swing.JOptionPane;
-import javax.swing.JTextArea;
 
 public class Starting_Point
 {
 	public static void main(String[] args)
 	{
 		/*  Setting double variables */
-		double originalGravityCount, finalGravityCountCount, alcoholByVolumeCount;
+		double ogCount, fgCount, abvCount;
 
 		/*  Setting string variables */
-		String OGString, FGString;
+		String ogString, fgString;
 		
-		/*  Creating a decimal format to show abv correctly */
+		/*  Creating a decimal format to show ABV correctly */
 		DecimalFormat threeDigits = new DecimalFormat("0.00");
 		
 		/*  Input to get original gravity, has to be in format of 0.000
-			Taking the input and storing it for use */
-		OGString = JOptionPane.showInputDialog("Enter the Original Gravity");
-		originalGravityCount = Double.parseDouble(OGString);
+			Taking the input and storing it for use */		
+		ogString = JOptionPane.showInputDialog("Enter the Original Gravity");
+		ogCount = Double.parseDouble(ogString);
 		
 		/*  Input to get final gravity, has to be in format of 0.000
 			Taking the input and storing it for use */
-		FGString =	JOptionPane.showInputDialog("Enter in the Final Gravity");
-		finalGravityCountCount = Double.parseDouble(FGString);
+		fgString =	JOptionPane.showInputDialog("Enter in the Final Gravity");
+		fgCount = Double.parseDouble(fgString);
 		
-		/*  Calculates the overall abv */
-		alcoholByVolumeCount = (originalGravityCount - finalGravityCountCount) * 131;
+		/*  Calculates the overall ABV */
+		abvCount = (ogCount - fgCount) * 131;
 		
 		/* 	Output showing the ABV */
-		JOptionPane.showMessageDialog(null, "The Percentage of Alcohol by Volume is " + threeDigits.format(alcoholByVolumeCount));
+		JOptionPane.showMessageDialog(null, "The percentage of alcohol by volume is " + threeDigits.format(abvCount));
 		
 		/*
-		 * Calculating degrees plato, work in progress *
+		 * Calculating Degrees Plato, work in progress *
 		
 		double originalGravityCount2, originalGravityCount3, finalGravityCountCount2, 
 		finalGravityCountCount3, startingPlato, finishingPlato, abvPlato, abvPlato2;
